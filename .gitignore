@@ -1,0 +1,15 @@
+
+# chatbot
+portfolio-chatbot/.env
+portfolio-chatbot/venv/
+portfolio-chatbot/.embeddings_cache.json
+portfolio-chatbot/__pycache__/
+portfolio-chatbot/knowledge.json
+portfolio-chatbot/.pytest_cache/
+
+# frontend
+node_modules/
+.next/
+out/
+npm-debug.log*
+*.tsbuildinfo

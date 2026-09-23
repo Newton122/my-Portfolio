@@ -1,0 +1,507 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   SIGNAL & STEEL — design tokens
+   One source of truth. Every colour in the UI resolves here.
+   Light and dark are two settings of the same instrument, not
+   two separate stylesheets.
+   ============================================================ */
+
+:root {
+  /* Surfaces — cool paper, never pure white except for cards */
+  --canvas: #eaeef3;
+  --surface: #ffffff;
+  --surface-2: #e3e9f0;
+  --surface-sunk: #dae1ea;
+
+  /* Hairlines — deliberately quiet. Structure, not cages. */
+  --line: #d9e0e8;
+  --line-strong: #c3cedb;
+
+  /* Text */
+  --text: #0c1119;
+  --text-2: #3b4655;
+  --text-3: #5d6b7e;
+
+  /* Signal — electric teal. Two values: one legible as text on
+     paper, one saturated enough to carry a fill. */
+  --signal: #056e65;
+  --signal-solid: #10b9a8;
+  --signal-hover: #0c9c8e;
+  /* Button fill — the signal teal (same hue), just darker. */
+  --btn-fill: #0c8d80;
+  --btn-fill-rgb: 12 141 128;
+  --on-btn: #ffffff;
+  --on-signal: #03211e;
+  --signal-wash: rgba(16, 185, 168, 0.1);
+  --signal-edge: rgba(5, 110, 101, 0.3);
+
+  /* Steel — the flat, cold ground under every dark band. One value,
+     no gradient: the dot field supplies the depth now. */
+  --steel: #0a121c;
+
+  /* Status */
+  --positive: #056e65;
+  --positive-wash: rgba(5, 110, 101, 0.1);
+  --negative: #c0362b;
+
+  /* Elevation — low, wide, cool. Never a black drop shadow. */
+  --shadow-sm: 0 1px 2px rgba(12, 17, 25, 0.05), 0 1px 1px rgba(12, 17, 25, 0.03);
+  --shadow-md: 0 4px 14px -2px rgba(12, 17, 25, 0.08), 0 2px 4px -2px rgba(12, 17, 25, 0.04);
+  --shadow-lg: 0 20px 40px -12px rgba(12, 17, 25, 0.14), 0 6px 12px -6px rgba(12, 17, 25, 0.06);
+
+  --ring: rgba(5, 110, 101, 0.45);
+
+  /* Corner radius. Buttons sit a step tighter than panels so a control
+     reads as a control — square-ish and pressable — rather than as a
+     pill floating on the surface. */
+  --radius-btn: 0.375rem;
+
+  /* Channel twins — consumed by Tailwind as rgb(var(--x) / <alpha-value>)
+     so opacity modifiers work. Keep in sync with the hex values above. */
+  --signal-bright: #3ee0d0;
+  --signal-bright-rgb: 62 224 208;
+
+  --canvas-rgb: 234 238 243;
+  --signal-rgb: 5 110 101;
+  --signal-solid-rgb: 16 185 168;
+  --positive-rgb: 5 110 101;
+
+  /* Spectrum hues — dark enough to read as text on paper. */
+  --hue-violet-rgb: 96 55 169;
+  --hue-blue-rgb: 27 84 169;
+  --hue-teal-rgb: 5 100 92;
+  --hue-green-rgb: 52 103 15;
+  --hue-amber-rgb: 128 88 0;
+}
+
+.dark {
+  --canvas: #070b11;
+  --surface: #0d141d;
+  --surface-2: #141d29;
+  --surface-sunk: #04070b;
+
+  --line: #1b2734;
+  --line-strong: #293849;
+
+  --text: #e7eef6;
+  --text-2: #94a6ba;
+  --text-3: #6c7e93;
+
+  --signal: #3ee0d0;
+  --signal-solid: #3ee0d0;
+  --signal-hover: #6bf0e3;
+  --btn-fill: #1ba799;
+  --btn-fill-rgb: 27 167 153;
+  --on-btn: #04211e;
+  --on-signal: #04211e;
+  --signal-wash: rgba(62, 224, 208, 0.1);
+  --signal-edge: rgba(62, 224, 208, 0.26);
+
+  --steel: #0c1826;
+
+  --positive: #3ee0d0;
+  --positive-wash: rgba(62, 224, 208, 0.12);
+  --negative: #f2776b;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 14px -2px rgba(0, 0, 0, 0.55), 0 2px 4px -2px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 24px 48px -12px rgba(0, 0, 0, 0.7), 0 6px 12px -6px rgba(0, 0, 0, 0.45);
+
+  --ring: rgba(62, 224, 208, 0.5);
+
+  --signal-bright: #3ee0d0;
+  --signal-bright-rgb: 62 224 208;
+
+  --canvas-rgb: 7 11 17;
+  --signal-rgb: 62 224 208;
+  --signal-solid-rgb: 62 224 208;
+  --positive-rgb: 62 224 208;
+
+  /* Spectrum hues — the lifted glow values on dark grounds. */
+  --hue-violet-rgb: 151 101 242;
+  --hue-blue-rgb: 63 145 255;
+  --hue-teal-rgb: 33 202 186;
+  --hue-green-rgb: 121 212 39;
+  --hue-amber-rgb: 217 195 2;
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--canvas);
+    color: var(--text);
+    font-feature-settings: 'cv05' 1, 'cv08' 1, 'ss03' 1;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Display face: tight, confident, engineered. */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-space), 'Space Grotesk', system-ui, sans-serif;
+    color: var(--text);
+    letter-spacing: -0.021em;
+    font-weight: 600;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Keyboard users get a visible, branded ring everywhere. */
+  :focus-visible {
+    outline: 2px solid var(--signal);
+    outline-offset: 2px;
+    border-radius: 3px;
+  }
+
+  ::selection {
+    background: var(--signal-solid);
+    color: var(--on-signal);
+  }
+
+  ::placeholder {
+    color: var(--text-3);
+    opacity: 1;
+  }
+
+  /* Scrollbar tuned to the canvas rather than the OS default. */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--line-strong) transparent;
+  }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: var(--line-strong);
+    border-radius: 99px;
+    border: 3px solid var(--canvas);
+  }
+  ::-webkit-scrollbar-thumb:hover { background: var(--text-3); }
+}
+
+/* ============================================================
+   Components
+   ============================================================ */
+
+@layer components {
+  /* The card. One recipe, used everywhere, so the whole site
+     reads as a single material. */
+  /* Card. The edge is the card — a definite line at the strong value
+     and a tight radius, no soft shadow underneath. A 1px whisper plus
+     a blur is the default generated-card look and reads as unfinished
+     at any size. */
+  .panel {
+    background-color: var(--surface);
+    border: 2px solid var(--line-strong);
+    border-radius: 0.5rem;
+    transition: border-color 220ms ease, transform 220ms ease;
+  }
+
+  .panel-interactive:hover {
+    border-color: var(--signal-edge);
+  }
+
+  /* Mono utility label — the data face. Dates, tags, periods,
+     eyebrows. Everything the machine would print. */
+  .label-mono {
+    font-family: var(--font-mono), ui-monospace, 'SFMono-Regular', monospace;
+    font-size: 0.6875rem;
+    line-height: 1;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .data-mono {
+    font-family: var(--font-mono), ui-monospace, 'SFMono-Regular', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.01em;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Embossed: a solid fill (no lightening), a darker lip underneath
+     and a soft shadow so it sits off the page. */
+  .btn-signal {
+    border-radius: var(--radius-btn);
+    background-color: var(--btn-fill);
+    color: var(--on-btn);
+    border: 1px solid color-mix(in srgb, var(--btn-fill) 60%, black);
+    box-shadow:
+      inset 0 -2px 0 rgba(0, 0, 0, 0.18),
+      0 2px 0 color-mix(in srgb, var(--btn-fill) 45%, black),
+      0 6px 16px -4px rgb(var(--btn-fill-rgb) / 0.45);
+    transition: background-color 200ms ease, box-shadow 200ms ease, transform 200ms ease, filter 200ms ease;
+  }
+  .btn-signal:hover {
+    filter: brightness(1.08);
+    transform: translateY(-1px);
+    box-shadow:
+      inset 0 -2px 0 rgba(0, 0, 0, 0.18),
+      0 3px 0 color-mix(in srgb, var(--btn-fill) 45%, black),
+      0 10px 24px -6px rgb(var(--btn-fill-rgb) / 0.55);
+  }
+  .btn-signal:active {
+    transform: translateY(1px);
+    filter: brightness(0.97);
+    box-shadow:
+      inset 0 2px 4px rgba(0, 0, 0, 0.25),
+      0 1px 0 color-mix(in srgb, var(--btn-fill) 45%, black),
+      0 3px 8px -4px rgb(var(--btn-fill-rgb) / 0.4);
+  }
+  .btn-signal:disabled {
+    transform: none;
+    filter: none;
+  }
+
+  .btn-ghost {
+    border-radius: var(--radius-btn);
+    color: var(--text);
+    border: 1px solid var(--line-strong);
+    background-color: transparent;
+    transition: border-color 200ms ease, color 200ms ease, background-color 200ms ease;
+  }
+  .btn-ghost:hover {
+    border-color: var(--signal-edge);
+    color: var(--signal);
+    background-color: var(--signal-wash);
+  }
+
+  /* Contact rail entrance. Deliberately CSS rather than a motion
+     component: the rail is the site's standing "get in touch" and
+     must not depend on a JS animation frame to become visible. */
+  .rail-in {
+    animation: rail-in 450ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .rail-in { animation: none; }
+  }
+
+  /* Contact rail card. One opaque surface with a hairline holds all
+     four buttons, so the rail reads as a single piece of the site's
+     furniture instead of four chips hovering over the page. */
+  .rail-card {
+    background-color: var(--surface);
+    border: 1px solid var(--line-strong);
+    box-shadow: var(--shadow-md);
+  }
+
+  /* Buttons inside the card carry no material of their own — the card
+     is the surface; they only take a fill on hover. */
+  .rail-chip {
+    color: var(--text-3);
+    transition: background-color 200ms ease, color 200ms ease;
+  }
+  .group:hover .rail-chip {
+    background-color: var(--signal-wash);
+    color: var(--signal);
+  }
+
+  .field {
+    width: 100%;
+    background-color: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: 0.5rem;
+    color: var(--text);
+    transition: border-color 180ms ease, box-shadow 180ms ease;
+  }
+  .field:focus {
+    outline: none;
+    border-color: var(--signal);
+    box-shadow: 0 0 0 3px var(--signal-wash);
+  }
+
+  /* Link that underlines from the baseline on hover rather than
+     changing colour alone. */
+  .link-quiet {
+    color: var(--text-2);
+    text-decoration: none;
+    background-image: linear-gradient(var(--signal), var(--signal));
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: color 180ms ease, background-size 260ms ease;
+  }
+  .link-quiet:hover {
+    color: var(--signal);
+    background-size: 100% 1px;
+  }
+}
+
+/* ============================================================
+   Utilities
+   ============================================================ */
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+
+  /* ---- Backgrounds -------------------------------------------------
+     A dark band is a flat steel ground, a DotsField canvas over it,
+     and grain on top. The depth is in the dot field's perspective
+     rather than in a stack of gradients. */
+
+  .bg-steel {
+    background-color: var(--steel);
+  }
+
+  /* Film grain. Keeps the flat ground from reading as dead fill. */
+  .grain {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    opacity: 0.035;
+    mix-blend-mode: overlay;
+  }
+
+  /* ---- Masks ------------------------------------------------------- */
+
+  .mask-fade-b {
+    -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+  }
+  .mask-fade-x {
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  }
+  .mask-fade-radial {
+    -webkit-mask-image: radial-gradient(70% 70% at 50% 40%, #000 40%, transparent 100%);
+    mask-image: radial-gradient(70% 70% at 50% 40%, #000 40%, transparent 100%);
+  }
+
+  /* ---- Type -------------------------------------------------------- */
+
+  /* Headline that fades from solid text into signal. Used once per
+     page, on the single most important line. */
+  .text-signal-fade {
+    background: linear-gradient(100deg, var(--signal-bright) 0%, #7ff5e8 40%, #7fb9e8 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Outlined display type — the counterweight to the solid line
+     above it, so a two-line name reads as one composed mark. */
+  .text-hollow {
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(231, 238, 246, 0.42);
+  }
+
+  /* The script face is far thinner than Space Grotesk, so an outline at
+     the same weight disappears. This one is drawn heavier and given a
+     faint fill, otherwise the second line reads as a smudge. */
+  .text-hollow-script {
+    color: rgba(231, 238, 246, 0.07);
+    -webkit-text-stroke: 1.4px rgba(231, 238, 246, 0.5);
+    paint-order: stroke fill;
+  }
+
+  /* ---- Motion ------------------------------------------------------ */
+
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 42s linear infinite;
+  }
+  .marquee-host:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  /* A pulse that runs the length of a connector, once per cycle —
+     the visual of a job moving through a pipeline stage. */
+  .flow-line {
+    position: relative;
+    overflow: hidden;
+    background: var(--line);
+  }
+  .flow-line::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, var(--signal) 50%, transparent);
+    animation: flow 2.8s linear infinite;
+  }
+
+  .animate-float { animation: float 7s ease-in-out infinite; }
+}
+
+/* ============================================================
+   Keyframes
+   ============================================================ */
+
+@keyframes rail-in {
+  from { opacity: 0; transform: translateX(-10px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes flow {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(100%); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+@keyframes caret {
+  0%, 45%  { opacity: 1; }
+  50%, 95% { opacity: 0; }
+}
+
+/* ============================================================
+   Cursor
+   Scoped: pointing devices only, and never over text input —
+   hiding the caret makes a form feel broken.
+   ============================================================ */
+
+@media (pointer: fine) {
+  body.custom-cursor,
+  body.custom-cursor a,
+  body.custom-cursor button,
+  body.custom-cursor [role='button'] {
+    cursor: none;
+  }
+  body.custom-cursor input,
+  body.custom-cursor textarea,
+  body.custom-cursor select {
+    cursor: auto;
+  }
+}
+
+/* Cursor ring grows and fills when it is over something clickable. */
+.cursor-ring.is-active {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-left: -20px;
+  margin-top: -20px;
+  background-color: var(--signal-wash);
+}
+
+/* ============================================================
+   Motion — honour the OS setting.
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .marquee-track { animation: none !important; }
+  .flow-line::after { animation: none !important; opacity: 0.5; }
+}
+ 

@@ -1,0 +1,277 @@
+================================================================================
+HOW THIS PORTFOLIO WORKS  —  a map for editing it yourself
+Project: /home/newton/Desktop/my-portfolio/build2
+Stack:   Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS 3
+Chatbot: separate Python service in ./portfolio-chatbot (FastAPI + Gemini)
+================================================================================
+
+
+--------------------------------------------------------------------------------
+0. THE SHORT ANSWER TO YOUR QUESTION
+--------------------------------------------------------------------------------
+
+You open src/app/about/page.tsx and you see {t.about.title} instead of "About me".
+
+That is on purpose: the site is bilingual (English / French). The page holds the
+LAYOUT, not the WORDS. The words live in two dictionary files:
+
+    src/translations/en.ts     <-- English text
+    src/translations/fr.ts     <-- French text
+
+`t` means "translations" — it is whichever dictionary matches the language the
+visitor picked. So this chain:
+
+    t . about . title
+    ^   ^       ^
+    |   |       +-- the key inside that section
+    |   +---------- the section
+    +-------------- the current dictionary (en.ts or fr.ts)
+
+means: open src/translations/en.ts, find the `about:` section, find `title:`.
+
+    en.ts line 71-85:
+        about: {
+          title: "About me",                                 <-- t.about.title
+          intro1: "I'm Brighton Matikiti, an AI ...",         <-- t.about.intro1
+          intro2: "I'm an aspiring Data & AI Engineer ...",   <-- t.about.intro2
+          valuesTitle: "What I care about",                   <-- t.about.valuesTitle
+          depth: "Practical first",
+          depthBody: "I build things people can actually use.",
+          ...
+        }
+
+TO CHANGE THE ABOUT TEXT: edit en.ts (and the same key in fr.ts). Do NOT edit
+page.tsx — the page is just the shape the text is poured into.
+
+RULE: en.ts and fr.ts must have the SAME KEYS. If you add `intro5` to en.ts and
+forget fr.ts, TypeScript throws an error and the page will not compile. Adding
+both takes ten seconds; forgetting costs you a confusing red error.
+
+
+--------------------------------------------------------------------------------
+1. THE FLOW — what happens when someone opens a page
+--------------------------------------------------------------------------------
+
+    browser asks for  /about
+             |
+             v
+    src/app/layout.tsx          the outer HTML shell: <html>, <body>, fonts,
+             |                  page title, the theme script, <Preloader/>
+             v
+    src/components/Providers.tsx
+             |                  wraps everything in LanguageProvider
+             v                  (so every component can read `t`)
+    src/components/ClientProviders.tsx
+             |                  Navbar + ContactRail + <main> + Footer +
+             v                  PortfolioChat — the furniture on every page
+    src/app/about/page.tsx      the page itself: <PageShell> + your content
+             |
+             v
+    src/components/ui.tsx       shared pieces (PageShell, PageHeader, Tag,
+             |                  Eyebrow, TONE colours)
+             v
+    src/translations/en.ts      the actual words
+    src/lib/*.ts                the actual data (projects, skills, blog...)
+
+Two sentences to remember:
+  * app/  = which URLs exist and what shape each page has.
+  * translations/ + lib/ = the content that fills those shapes.
+
+
+--------------------------------------------------------------------------------
+2. WHERE DO I EDIT ___ ?  (the cheat sheet)
+--------------------------------------------------------------------------------
+
+WHAT YOU WANT TO CHANGE                  FILE TO OPEN
+-------------------------------------    ---------------------------------------
+Any visible sentence / heading / label   src/translations/en.ts  +  fr.ts
+Menu item names                          translations (nav: section)
+Hero text, badge, section titles         translations (home: section)
+About page text                          translations (about: section)
+Footer line                              translations (footer: section)
+
+A project (add / edit / remove)          src/lib/projects.ts     (PROJECTS)
+  ...its French version                  fr.ts  ->  projects.data  (match slug)
+Skills list                              src/lib/skills.ts       (SKILLS)
+Blog posts                               src/lib/blog.ts         (BLOG_POSTS)
+Certificates                             src/lib/certificates.ts (CERTIFICATES)
+Timeline / coursework                    src/lib/experience.ts
+
+Page LAYOUT (order of sections, grid)    src/app/<page>/page.tsx
+Navbar, footer, chat widget, rail        src/components/*.tsx
+Colours, fonts, shadows, reusable CSS    src/app/globals.css  +  tailwind.config.js
+Images, PDFs, resume                     public/   (referenced as "/img.jpg")
+Gemini key / chatbot settings            portfolio-chatbot/.env  — never commit
+Next.js secrets (SMTP, chat URL)         build2/.env.local (create it if needed)
+
+Routes (URLs) come from FOLDER NAMES inside src/app:
+    src/app/page.tsx              ->  /
+    src/app/about/page.tsx        ->  /about
+    src/app/projects/page.tsx     ->  /projects
+    src/app/blog/[slug]/page.tsx  ->  /blog/anything   ([slug] = wildcard)
+    src/app/api/chat/route.ts     ->  /api/chat        (code, not a page)
+
+To add a page: make a folder with a page.tsx inside, then add its name to the
+nav (translations nav: + the list in src/components/Navbar.tsx).
+
+
+--------------------------------------------------------------------------------
+3. WORKED EXAMPLE — change "What I care about" on the About page
+--------------------------------------------------------------------------------
+
+1. Open src/app/about/page.tsx. Find what renders it:
+
+       <h2 className="text-h1 sm:text-display">{t.about.valuesTitle}</h2>
+
+2. The name after `t.` tells you where to go: section `about`, key `valuesTitle`.
+
+3. src/translations/en.ts:
+       valuesTitle: "What I care about",      ->  change the text in the quotes
+
+4. src/translations/fr.ts:
+       valuesTitle: "Ce qui compte pour moi", ->  change the French too
+
+5. Save. The dev server reloads the page by itself (hot reload).
+
+Anything NOT wrapped in {curly braces} in the JSX is literal text you can edit
+right there — e.g. in about/page.tsx the caption 'Unitrans' and the alt text are
+plain strings, not translation keys.
+
+
+--------------------------------------------------------------------------------
+4. TERMS YOU WILL KEEP MEETING
+--------------------------------------------------------------------------------
+
+COMPONENT      A function that returns a piece of UI. Always capitalised:
+               `export default function AboutPage()`. Used as <AboutPage />.
+
+JSX            The HTML-looking code inside a component. It is JavaScript, so:
+               - `class` is written `className`
+               - {curly braces} mean "run this JavaScript and print the result"
+               - one component must return ONE top-level element.
+
+PROPS          Values passed into a component, like HTML attributes:
+               <PageShell width="wide" header={...}>  ->  width and header are props.
+
+STATE          A value the component remembers and that redraws the UI when it
+               changes: `const [open, setOpen] = useState(false)`.
+
+HOOK           A function starting with `use` that plugs into React:
+               useState (remember a value), useEffect (run after render),
+               useContext (read shared data). Only callable inside components.
+
+CONTEXT /      A way to share one value with the whole tree without passing it
+PROVIDER       down by hand. Here: LanguageProvider holds the language, and any
+               component calls `const { t, language } = useLanguage()` to read it.
+               File: src/context/LanguageContext.tsx
+
+SERVER         Next.js renders components on the server by default (faster, good
+COMPONENT      for SEO). They cannot use useState/onClick.
+
+CLIENT         A file starting with the line "use client" runs in the browser too,
+COMPONENT      so it can have state, clicks and animation. Almost every page here
+               is a client component because of the language switcher and Framer
+               Motion animations.
+
+HYDRATION      Server sends HTML, then React "wakes it up" in the browser.
+               NOTE: ClientProviders is loaded with `ssr: false`, so the navbar,
+               contact rail and chat widget only appear AFTER hydration. That is
+               why they are missing if you look at raw HTML with curl — not a bug.
+
+ROUTE /        A URL. In the App Router, a folder under src/app with a page.tsx
+APP ROUTER     becomes a route. `[slug]` is a dynamic segment: one file serves
+               many URLs, and the code looks the item up by its slug.
+
+SLUG           The short id in a URL: /blog/thinking-about-schema-before-code.
+               Each project / post / certificate object has a `slug` field.
+
+API ROUTE      Server code at src/app/api/<name>/route.ts, reachable at
+               /api/<name>. Used for things the browser must not do directly
+               (send mail, hold a secret key).
+
+PROXY          /api/chat does not talk to Gemini itself — it forwards the message
+               to the Python backend (PYTHON_CHAT_URL, default
+               http://127.0.0.1:8000/chat) and returns its answer. That keeps the
+               API key on the server side.
+
+ENV VAR        A setting read from a .env file, e.g. process.env.PYTHON_CHAT_URL.
+               Never hardcode keys in the source.
+
+TAILWIND       Styling by class names instead of a separate CSS file:
+               className="mt-12 flex gap-4 text-ink-2"
+               mt-12 = margin-top, gap-4 = space between children, etc.
+
+DESIGN TOKEN   The colour names here are custom, defined in tailwind.config.js
+               and fed by CSS variables in globals.css:
+                 bg-canvas   page background        text-ink    main text
+                 bg-surface  card background        text-ink-2  secondary text
+                 border-line hairline borders       text-ink-3  faint text
+                 signal      the accent colour      hue-violet/blue/teal/green/amber
+               Because they are variables, light and dark mode both work without
+               writing `dark:` twins. Change a colour ONCE in globals.css (:root
+               for light, .dark for dark) and the whole site follows.
+
+@layer         globals.css has three zones: base (element defaults), components
+               (reusable classes like .panel, .btn-signal, .rail-card), utilities
+               (small helpers). Put reusable styling there, one-offs in className.
+
+FRAMER MOTION  The animation library. <motion.div initial={...} whileInView={...}>
+               means "start invisible, fade in when scrolled into view".
+
+
+--------------------------------------------------------------------------------
+5. THE DATA FILES (src/lib) — where real content lives
+--------------------------------------------------------------------------------
+
+These are plain TypeScript arrays. Editing them is just editing text between
+quotes. Each file starts with an `interface` that lists the allowed fields —
+read that first; it tells you exactly which fields exist and which are optional
+(a `?` means optional).
+
+projects.ts   PROJECTS: slug, title, tagline, description, built?, learned?,
+              tech[], github, demo, image?, imageAlt.
+              Screenshot goes in public/ and is referenced as '/name.png'.
+              There is a commented-out template at the bottom of the list —
+              copy it, uncomment, fill in.
+
+              French: fr.ts -> projects.data lists PARTIAL entries matched by
+              slug. localizeProjects() (projects.ts, bottom) merges them over the
+              English ones, so a project without a translation stays English.
+
+skills.ts     SKILLS: a group name -> list of skill names.
+blog.ts       BLOG_POSTS: body is one long string; a blank line starts a new
+              paragraph, and a paragraph wrapped in **like this** is rendered as
+              a small heading instead.
+certificates.ts / experience.ts  same idea.
+
+
+--------------------------------------------------------------------------------
+6. RUNNING AND CHECKING
+--------------------------------------------------------------------------------
+
+    cd /home/newton/Desktop/my-portfolio/build2
+    npm run dev            # site at http://localhost:3000, reloads on save
+    npx tsc --noEmit       # type check: catches typos in keys and fields
+    npm run build          # production build; fails loudly on real errors
+
+Chatbot backend (separate terminal):
+    cd /home/newton/Desktop/my-portfolio
+    .venv/bin/uvicorn main:app --reload --port 8000    # run from portfolio-chatbot/
+The widget shows "assistant unavailable" when this is not running.
+
+
+--------------------------------------------------------------------------------
+7. GOTCHAS THAT WILL BITE YOU
+--------------------------------------------------------------------------------
+
+* Added a key to en.ts?  Add it to fr.ts too, or the build breaks.
+* Every item in a .map() list needs a unique key={...} prop.
+* Images must live in public/ and be written as "/file.png" (leading slash, no
+  "public" in the path).
+* A component using useState / onClick needs "use client" at the top of its file.
+* Commas matter: every entry in an object or array ends with a comma.
+* Quotes inside text: use "double" outside and 'single' inside, or escape it —
+  "I'm" is fine inside double quotes, 'I'm' is a syntax error.
+* Don't edit .next/ or node_modules/ — generated, not yours.
+* If the page goes blank, look at the terminal running `npm run dev`; the error
+  there names the file and the line.
