@@ -14,25 +14,15 @@ import hashlib
 import json
 import math
 import re
-import subprocess
 from collections import Counter
 from pathlib import Path
+
+from extract_portfolio import extract_portfolio_text
 
 BASE_DIR = Path(__file__).resolve().parent
 PORTFOLIO_ROOT = BASE_DIR.parent
 KNOWLEDGE_FILE = BASE_DIR / "knowledge.json"
 EMBED_CACHE_FILE = BASE_DIR / ".embeddings_cache.json"
-BUILD_SCRIPT = BASE_DIR / "build_knowledge.mjs"
-SOURCE_FILES = [
-    "src/lib/projects.ts",
-    "src/lib/experience.ts",
-    "src/lib/skills.ts",
-    "src/lib/certificates.ts",
-    "src/lib/blog.ts",
-    "src/translations/en.ts",
-    "src/app/contact/page.tsx",
-]
-
 EMBED_MODEL = "gemini-embedding-001"
 EMBED_DIM = 768
 ALWAYS_INCLUDE = ("profile",)
@@ -49,29 +39,29 @@ def _tokens(text: str) -> list[str]:
     return [t for t in re.findall(r"[a-z0-9+#.]+", text.lower()) if t not in STOPWORDS]
 
 
-def _knowledge_is_stale() -> bool:
-    if not KNOWLEDGE_FILE.exists():
-        return True
-    built = KNOWLEDGE_FILE.stat().st_mtime
-    return any(
-        (PORTFOLIO_ROOT / f).exists() and (PORTFOLIO_ROOT / f).stat().st_mtime > built
-        for f in SOURCE_FILES
-    )
-
-
 def load_documents() -> list[dict]:
-    """Load knowledge.json, rebuilding it first if the site data changed."""
-    if _knowledge_is_stale():
-        try:
-            subprocess.run(["node", str(BUILD_SCRIPT)], check=True, capture_output=True, text=True, timeout=60)
-        except (OSError, subprocess.SubprocessError) as exc:
-            if not KNOWLEDGE_FILE.exists():
-                raise RuntimeError(
-                    "knowledge.json is missing and could not be built. "
-                    "Run `node portfolio-chatbot/build_knowledge.mjs` from the site folder."
-                ) from exc
-            print(f"[rag] Could not rebuild knowledge.json, using the old one: {exc}")
-    return json.loads(KNOWLEDGE_FILE.read_text(encoding="utf-8"))["docs"]
+    """Extract the current portfolio source directly at startup."""
+    text = extract_portfolio_text()
+    if not text:
+        raise RuntimeError("No portfolio content could be extracted from the frontend source files.")
+
+    documents = []
+    for index, block in enumerate(re.split(r"\n\n(?=SOURCE: )", text)):
+        lines = block.splitlines()
+        if not lines or not lines[0].startswith("SOURCE: "):
+            continue
+
+        source = lines[0].removeprefix("SOURCE: ").strip()
+        content = "\n".join(lines[1:]).strip()
+        if content:
+            documents.append({
+                "id": f"source-{index}",
+                "title": source,
+                "url": "/",
+                "text": content,
+            })
+
+    return documents
 
 
 class BM25:
