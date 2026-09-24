@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { ArrowLeft } from 'lucide-react'
 import { Tag } from '@/components/ui'
@@ -51,6 +52,24 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       </div>
 
       <article className="mx-auto max-w-2xl px-6 pt-14 sm:pt-16">
+        {post.image && (
+          <figure className="mb-12 overflow-hidden rounded-lg border border-line bg-surface-2">
+            <div className="relative aspect-[16/10]">
+              <Image
+                src={post.image}
+                alt={post.imageAlt ?? post.title}
+                fill
+                priority
+                sizes="(min-width: 672px) 624px, calc(100vw - 3rem)"
+                className="object-cover"
+              />
+            </div>
+            <figcaption className="border-t border-line px-4 py-3 text-sm text-ink-3">
+              Representing OpenMinds at a job summit
+            </figcaption>
+          </figure>
+        )}
+
         {/* Body copy at 17px - this is the one place on the site
             people actually read at length. */}
         <div className="mt-10 space-y-6">

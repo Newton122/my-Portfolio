@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
 import { Tag, Eyebrow, PageShell, PageHeader } from '@/components/ui'
@@ -56,6 +57,17 @@ export default function BlogPage() {
             className="group"
           >
             <Link href={`/blog/${post.slug}`} className="flex flex-col gap-4 py-7 sm:flex-row sm:justify-between">
+              {post.image && (
+                <div className="relative order-2 aspect-[4/3] w-full shrink-0 overflow-hidden rounded-md border border-line bg-surface-2 sm:order-none sm:w-44">
+                  <Image
+                    src={post.image}
+                    alt={post.imageAlt ?? post.title}
+                    fill
+                    sizes="(min-width: 640px) 176px, 100vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                  />
+                </div>
+              )}
               <div className="flex-1">
                 <div className="mb-2 flex flex-wrap items-center gap-2">
                   <Eyebrow>{post.category}</Eyebrow>

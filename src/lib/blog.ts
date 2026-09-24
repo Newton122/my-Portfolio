@@ -7,6 +7,8 @@ export interface BlogPost {
   excerpt: string
   body: string
   tags: string[]
+  image?: string
+  imageAlt?: string
 }
 
 // Starter posts - written to match the real focus areas (backend, databases, AI
@@ -14,6 +16,31 @@ export interface BlogPost {
 // whenever you're ready; the structure (category, tags, markdown-style **headers**
 // in body) is built to make that easy.
 export const BLOG_POSTS: BlogPost[] = [
+  {
+    slug: 'representing-openminds-at-a-job-summit',
+    title: 'Representing OpenMinds at a Job Summit',
+    date: 'September 2026',
+    readTime: '3 min read',
+    category: 'Community',
+    excerpt:
+      'A day spent representing OpenMinds as a staff member at a job summit, connecting a student tech community with people thinking seriously about what comes next.',
+    body: `Representing OpenMinds at a job summit gave me a different view of what it means to build a community around technology. For the day, I was not only attending as a student - I was helping carry the club's presence into a room filled with students, professionals and organizations.
+
+**Showing up with purpose**
+
+Being part of the staff meant welcoming people, explaining what OpenMinds does and making the club feel approachable to anyone curious about technology. Small conversations mattered: a question about the club could become someone's first step toward joining a project, learning a new skill or meeting people with similar interests.
+
+**Learning outside the classroom**
+
+Job summits make the connection between learning and opportunity feel concrete. You hear what teams are looking for, how people describe their work and which skills help conversations move forward. That perspective is useful as I continue growing toward data, AI and full-stack engineering.
+
+**What I am taking forward**
+
+The experience reinforced something I already value: technical growth is stronger when it is shared. Representing OpenMinds reminded me that community work is also engineering work in a broader sense - listening carefully, making connections and helping useful ideas reach more people.`,
+    tags: ['OpenMinds', 'Community', 'Career'],
+    image: '/openminds.jpg',
+    imageAlt: 'Brighton representing OpenMinds at a job summit',
+  },
   {
     slug: 'thinking-about-schema-before-code',
     title: 'Why I Sketch the Schema Before Writing Any Code',
