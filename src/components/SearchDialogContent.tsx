@@ -29,7 +29,7 @@ const PAGES_EN = [
 
 const PAGES_FR = [
   { label: 'Accueil', href: '/', excerpt: 'Portfolio d\'étudiant en ingénierie Data & IA' },
-  { label: 'À propos', href: '/about', excerpt: 'À propos de Brighton Matikiti' },
+  { label: '�- propos', href: '/about', excerpt: '�- propos de Brighton Matikiti' },
   { label: 'Projets', href: '/projects', excerpt: 'Projets logiciels réalisés pendant mes études' },
   { label: 'Compétences', href: '/skills', excerpt: 'Technologies que j\'utilise et j\'apprends' },
   { label: 'Expérience', href: '/experience', excerpt: 'Travail académique et projets personnels' },

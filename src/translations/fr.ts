@@ -1,6 +1,6 @@
 export default {
   home: {
-    badge: "À la recherche de stages",
+    badge: "�- la recherche de stages",
     roles: ["Étudiant en ingénierie IA", "Ingénieur Data & IA", "Développeur Full-Stack"],
     subtitle: "Étudiant en ingénierie IA | Ingénieur Data & IA | Développeur Full-Stack",
     description: "Futur ingénieur Data & IA, je crée des solutions logicielles concrètes avec la data, le machine learning et les technologies web modernes.",
@@ -27,7 +27,7 @@ export default {
   projects: {
     title: "Projets",
     allProjects: "Tous les projets",
-    // Traductions par slug — les projets sans traduction restent en anglais.
+    // Traductions par slug --- les projets sans traduction restent en anglais.
     data: [
       {
         slug: 'careerlens',
@@ -63,14 +63,14 @@ export default {
         tagline: 'Interface de bibliothèque',
         description: "Un frontend pour parcourir des livres, filtrer des collections et garder une liste de lecture.",
         built: "React et Tailwind CSS, avec recherche et filtres rapides.",
-        learned: "Les petits détails — états vides, chargements — comptent beaucoup.",
+        learned: "Les petits détails --- états vides, chargements --- comptent beaucoup.",
         imageAlt: 'Interface BookVerse',
       },
       {
         slug: 'portfolio-site',
         title: 'Ce portfolio',
         tagline: 'Site personnel',
-        description: "Le site que vous visitez — construit avec Next.js, TypeScript et Tailwind CSS.",
+        description: "Le site que vous visitez --- construit avec Next.js, TypeScript et Tailwind CSS.",
         imageAlt: 'Aperçu du portfolio',
       },
     ],
@@ -110,7 +110,7 @@ export default {
   },
   nav: {
     home: "Accueil",
-    about: "À propos",
+    about: "�- propos",
     projects: "Projets",
     skills: "Compétences",
     blog: "Blog",
@@ -124,7 +124,7 @@ export default {
     description: "Étudiant en ingénierie IA à l'USTHB. Je construis avec la data, le machine learning et le web.",
   },
   about: {
-    title: "À propos",
+    title: "�- propos",
     intro1: "Je suis Brighton Matikiti, étudiant en ingénierie IA à l'USTHB, à Alger.",
     intro2: "Futur ingénieur Data & IA, j'aime créer des logiciels concrets avec la data, le machine learning et les technologies web modernes - des applications full-stack aux outils basés sur les données.",
     intro3: "Je cherche un stage pour apprendre au sein d'une vraie équipe et construire des choses utiles.",
@@ -140,7 +140,7 @@ export default {
   },
   contact: {
     title: "Contact",
-    subtitle: "Stage, projet ou simple question — écrivez-moi.",
+    subtitle: "Stage, projet ou simple question --- écrivez-moi.",
     contactDetails: "Coordonnées",
     email: "Email",
     location: "Alger · ouvert au télétravail",
@@ -151,7 +151,7 @@ export default {
       subject: "Sujet",
       message: "Message",
       send: "Envoyer le message",
-      sending: "Envoi…",
+      sending: "Envoi--�",
       sent: "Message envoyé",
       sentMsg: "Merci ! Je vous réponds bientôt.",
       error: "Le message n'a pas pu être envoyé. Réessayez ou écrivez-moi directement.",
@@ -167,7 +167,7 @@ export default {
         type: 'education',
         title: 'Ingénierie IA',
         org: 'USTHB',
-        period: '2024 – Présent',
+        period: '2024 --- Présent',
         description: "Diplôme d'ingénieur axé sur l'IA, la data et les fondamentaux de l'informatique.",
         tags: ['Académique', 'IA'],
       },
@@ -199,15 +199,15 @@ export default {
         type: 'learning',
         title: 'Membre du département IA',
         org: 'Open Minds Club',
-        period: 'Nov 2025 – Présent',
-        description: "Club tech étudiant — je travaille sur des projets IA et je partage ce que j'apprends.",
+        period: 'Nov 2025 --- Présent',
+        description: "Club tech étudiant --- je travaille sur des projets IA et je partage ce que j'apprends.",
         tags: ['IA', 'Communauté'],
       },
       {
         type: 'learning',
-        title: 'Programme Aspire — Leadership organisationnel',
+        title: 'Programme Aspire --- Leadership organisationnel',
         org: 'Harvard Aspire Institute',
-        period: 'Oct 2025 – Déc 2025',
+        period: 'Oct 2025 --- Déc 2025',
         description: "Programme de leadership : travail d'équipe, communication et planification.",
         tags: ['Leadership', 'Certificat'],
       },

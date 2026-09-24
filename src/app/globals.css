@@ -3,20 +3,20 @@
 @tailwind utilities;
 
 /* ============================================================
-   SIGNAL & STEEL — design tokens
+   SIGNAL & STEEL --- design tokens
    One source of truth. Every colour in the UI resolves here.
    Light and dark are two settings of the same instrument, not
    two separate stylesheets.
    ============================================================ */
 
 :root {
-  /* Surfaces — cool paper, never pure white except for cards */
+  /* Surfaces --- cool paper, never pure white except for cards */
   --canvas: #eaeef3;
   --surface: #ffffff;
   --surface-2: #e3e9f0;
   --surface-sunk: #dae1ea;
 
-  /* Hairlines — deliberately quiet. Structure, not cages. */
+  /* Hairlines --- deliberately quiet. Structure, not cages. */
   --line: #d9e0e8;
   --line-strong: #c3cedb;
 
@@ -25,12 +25,12 @@
   --text-2: #3b4655;
   --text-3: #5d6b7e;
 
-  /* Signal — electric teal. Two values: one legible as text on
+  /* Signal --- electric teal. Two values: one legible as text on
      paper, one saturated enough to carry a fill. */
   --signal: #056e65;
   --signal-solid: #10b9a8;
   --signal-hover: #0c9c8e;
-  /* Button fill — the signal teal (same hue), just darker. */
+  /* Button fill --- the signal teal (same hue), just darker. */
   --btn-fill: #0c8d80;
   --btn-fill-rgb: 12 141 128;
   --on-btn: #ffffff;
@@ -38,7 +38,7 @@
   --signal-wash: rgba(16, 185, 168, 0.1);
   --signal-edge: rgba(5, 110, 101, 0.3);
 
-  /* Steel — the flat, cold ground under every dark band. One value,
+  /* Steel --- the flat, cold ground under every dark band. One value,
      no gradient: the dot field supplies the depth now. */
   --steel: #0a121c;
 
@@ -47,7 +47,7 @@
   --positive-wash: rgba(5, 110, 101, 0.1);
   --negative: #c0362b;
 
-  /* Elevation — low, wide, cool. Never a black drop shadow. */
+  /* Elevation --- low, wide, cool. Never a black drop shadow. */
   --shadow-sm: 0 1px 2px rgba(12, 17, 25, 0.05), 0 1px 1px rgba(12, 17, 25, 0.03);
   --shadow-md: 0 4px 14px -2px rgba(12, 17, 25, 0.08), 0 2px 4px -2px rgba(12, 17, 25, 0.04);
   --shadow-lg: 0 20px 40px -12px rgba(12, 17, 25, 0.14), 0 6px 12px -6px rgba(12, 17, 25, 0.06);
@@ -55,11 +55,11 @@
   --ring: rgba(5, 110, 101, 0.45);
 
   /* Corner radius. Buttons sit a step tighter than panels so a control
-     reads as a control — square-ish and pressable — rather than as a
+     reads as a control --- square-ish and pressable --- rather than as a
      pill floating on the surface. */
   --radius-btn: 0.375rem;
 
-  /* Channel twins — consumed by Tailwind as rgb(var(--x) / <alpha-value>)
+  /* Channel twins --- consumed by Tailwind as rgb(var(--x) / <alpha-value>)
      so opacity modifiers work. Keep in sync with the hex values above. */
   --signal-bright: #3ee0d0;
   --signal-bright-rgb: 62 224 208;
@@ -69,7 +69,7 @@
   --signal-solid-rgb: 16 185 168;
   --positive-rgb: 5 110 101;
 
-  /* Spectrum hues — dark enough to read as text on paper. */
+  /* Spectrum hues --- dark enough to read as text on paper. */
   --hue-violet-rgb: 96 55 169;
   --hue-blue-rgb: 27 84 169;
   --hue-teal-rgb: 5 100 92;
@@ -120,7 +120,7 @@
   --signal-solid-rgb: 62 224 208;
   --positive-rgb: 62 224 208;
 
-  /* Spectrum hues — the lifted glow values on dark grounds. */
+  /* Spectrum hues --- the lifted glow values on dark grounds. */
   --hue-violet-rgb: 151 101 242;
   --hue-blue-rgb: 63 145 255;
   --hue-teal-rgb: 33 202 186;
@@ -197,7 +197,7 @@
 @layer components {
   /* The card. One recipe, used everywhere, so the whole site
      reads as a single material. */
-  /* Card. The edge is the card — a definite line at the strong value
+  /* Card. The edge is the card --- a definite line at the strong value
      and a tight radius, no soft shadow underneath. A 1px whisper plus
      a blur is the default generated-card look and reads as unfinished
      at any size. */
@@ -212,7 +212,7 @@
     border-color: var(--signal-edge);
   }
 
-  /* Mono utility label — the data face. Dates, tags, periods,
+  /* Mono utility label --- the data face. Dates, tags, periods,
      eyebrows. Everything the machine would print. */
   .label-mono {
     font-family: var(--font-mono), ui-monospace, 'SFMono-Regular', monospace;
@@ -296,7 +296,7 @@
     box-shadow: var(--shadow-md);
   }
 
-  /* Buttons inside the card carry no material of their own — the card
+  /* Buttons inside the card carry no material of their own --- the card
      is the surface; they only take a fill on hover. */
   .rail-chip {
     color: var(--text-3);
@@ -387,7 +387,7 @@
     color: transparent;
   }
 
-  /* Outlined display type — the counterweight to the solid line
+  /* Outlined display type --- the counterweight to the solid line
      above it, so a two-line name reads as one composed mark. */
   .text-hollow {
     color: transparent;
@@ -414,7 +414,7 @@
     animation-play-state: paused;
   }
 
-  /* A pulse that runs the length of a connector, once per cycle —
+  /* A pulse that runs the length of a connector, once per cycle ---
      the visual of a job moving through a pipeline stage. */
   .flow-line {
     position: relative;
@@ -463,7 +463,7 @@
 
 /* ============================================================
    Cursor
-   Scoped: pointing devices only, and never over text input —
+   Scoped: pointing devices only, and never over text input ---
    hiding the caret makes a form feel broken.
    ============================================================ */
 
@@ -491,7 +491,7 @@
 }
 
 /* ============================================================
-   Motion — honour the OS setting.
+   Motion --- honour the OS setting.
    ============================================================ */
 
 @media (prefers-reduced-motion: reduce) {

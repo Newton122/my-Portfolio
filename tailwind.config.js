@@ -5,7 +5,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Semantic tokens — resolved from CSS variables in globals.css
+        // Semantic tokens --- resolved from CSS variables in globals.css
         // so light/dark never needs a `dark:` twin for colour.
         canvas: 'rgb(var(--canvas-rgb) / <alpha-value>)',
         surface: {
@@ -25,7 +25,7 @@ module.exports = {
         signal: {
           DEFAULT: 'rgb(var(--signal-rgb) / <alpha-value>)',
           solid: 'rgb(var(--signal-solid-rgb) / <alpha-value>)',
-          // Constant across themes — for the steel bands, which are dark in both.
+          // Constant across themes --- for the steel bands, which are dark in both.
           bright: 'rgb(var(--signal-bright-rgb) / <alpha-value>)',
           hover: 'var(--signal-hover)',
           wash: 'var(--signal-wash)',
@@ -81,7 +81,7 @@ module.exports = {
         prose: '68ch',
       },
       spacing: {
-        // Room to breathe between sections — scales down on phones.
+        // Room to breathe between sections --- scales down on phones.
         section: 'clamp(5.5rem, 11vw, 9rem)',
       },
       transitionTimingFunction: {

@@ -12,7 +12,7 @@ const EMAIL = 'matikitibrighton6@gmail.com'
 
 const PAGES = [
   { label: 'Home', href: '/', labelFr: 'Accueil' },
-  { label: 'About', href: '/about', labelFr: 'À propos' },
+  { label: 'About', href: '/about', labelFr: '�- propos' },
   { label: 'Projects', href: '/projects', labelFr: 'Projets' },
   { label: 'Skills', href: '/skills', labelFr: 'Compétences' },
   { label: 'Blog', href: '/blog', labelFr: 'Blog' },

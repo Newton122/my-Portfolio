@@ -18,7 +18,7 @@ const reveal = {
 
 export type Tone = 'violet' | 'blue' | 'teal' | 'green' | 'amber'
 
-/** Order used when cycling through a list (projects, skill groupsâ€¦). */
+/** Order used when cycling through a list (projects, skill groups--¦). */
 export const TONE_ORDER: Tone[] = ['violet', 'blue', 'teal', 'green', 'amber']
 export const toneAt = (i: number): Tone => TONE_ORDER[i % TONE_ORDER.length]
 

@@ -28,7 +28,7 @@ const COPY = {
     title: "Brighton's assistant",
     status: "Answers from this site",
     hello: "Hi! I can tell you about Brighton's projects, skills, studies and how to reach him.",
-    placeholder: "Ask a question…",
+    placeholder: "Ask a question--�",
     hint: "Enter to send · Shift+Enter for a new line",
     retry: "Try again",
     clear: "Clear chat",
@@ -47,7 +47,7 @@ const COPY = {
     title: "L'assistant de Brighton",
     status: "Répond à partir de ce site",
     hello: "Bonjour ! Je peux vous parler des projets, compétences et études de Brighton, et comment le contacter.",
-    placeholder: "Posez une question…",
+    placeholder: "Posez une question--�",
     hint: "Entrée pour envoyer · Maj+Entrée pour une ligne",
     retry: "Réessayer",
     clear: "Effacer",
@@ -82,7 +82,7 @@ const PAGE_NAMES: Record<string, string> = {
   "/contact": "Contact",
 };
 
-/* ── Tiny formatter: **bold**, "- " bullets, links, emails, /pages ── */
+/* ------ Tiny formatter: **bold**, "- " bullets, links, emails, /pages ------ */
 
 const INLINE = /(\[[^\]]+\]\([^)\s]+\)|\*\*[^*]+\*\*|https?:\/\/[^\s)]+|[\w.+-]+@[\w-]+\.[\w.]+|(?<![\w/])\/(?:about|projects|skills|experience|education|testimonials|now|blog|contact)\b)/g;
 const LINK = "font-medium text-signal underline decoration-signal/30 underline-offset-2 hover:decoration-signal";
@@ -143,7 +143,7 @@ function Formatted({ text }: { text: string }) {
     list = [];
   };
   for (const line of text.split("\n")) {
-    const bullet = line.match(/^\s*[-*•]\s+(.*)/);
+    const bullet = line.match(/^\s*[-*--�]\s+(.*)/);
     if (bullet) {
       list.push(bullet[1]);
       continue;
@@ -269,7 +269,7 @@ export default function PortfolioChat() {
 
   return (
     <>
-      {/* ── Launcher ─────────────────────────────────────────── */}
+      {/* ------ Launcher --------------------------------------------------------------------------------------------------------------------------------- */}
       <AnimatePresence>
         {!open && (
           <motion.button
@@ -292,7 +292,7 @@ export default function PortfolioChat() {
         )}
       </AnimatePresence>
 
-      {/* ── Panel ────────────────────────────────────────────── */}
+      {/* ------ Panel ------------------------------------------------------------------------------------------------------------------------------------------ */}
       <AnimatePresence>
         {open && (
           <motion.section
@@ -305,7 +305,7 @@ export default function PortfolioChat() {
             style={{ transformOrigin: "bottom right" }}
             className="fixed inset-x-3 bottom-3 top-20 z-[60] flex flex-col overflow-hidden rounded-2xl border border-line-strong bg-surface shadow-lg sm:inset-x-auto sm:bottom-6 sm:right-6 sm:top-auto sm:h-[min(620px,calc(100vh-7rem))] sm:w-[400px]"
           >
-            {/* Spectrum strip — the site's five hues. */}
+            {/* Spectrum strip --- the site's five hues. */}
             <div className="flex h-1 shrink-0" aria-hidden>
               <span className="flex-1 bg-hue-violet" />
               <span className="flex-1 bg-hue-blue" />

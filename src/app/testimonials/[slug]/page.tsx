@@ -9,7 +9,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   const cert = CERTIFICATES.find((c) => c.slug === slug)
-  return { title: cert ? `${cert.title} — Certificate` : 'Certificate' }
+  return { title: cert ? `${cert.title} --- Certificate` : 'Certificate' }
 }
 
 export default async function CertificateDetailPage({ params }: { params: Promise<{ slug: string }> }) {

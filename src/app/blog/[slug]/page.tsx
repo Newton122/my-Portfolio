@@ -51,7 +51,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       </div>
 
       <article className="mx-auto max-w-2xl px-6 pt-14 sm:pt-16">
-        {/* Body copy at 17px — this is the one place on the site
+        {/* Body copy at 17px --- this is the one place on the site
             people actually read at length. */}
         <div className="mt-10 space-y-6">
           {paragraphs.map((para, i) => {

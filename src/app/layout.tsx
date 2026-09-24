@@ -4,21 +4,21 @@ import "./globals.css";
 import Providers from '@/components/Providers'
 import Preloader from '@/components/Preloader'
 
-// Body face — open and friendly, easy to read at length.
+// Body face --- open and friendly, easy to read at length.
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
 });
 
-// Display face — a grotesque with some character in its curves.
+// Display face --- a grotesque with some character in its curves.
 const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
   variable: "--font-display",
   display: "swap",
 });
 
-// Data face — everything the machine would print: dates, tags,
+// Data face --- everything the machine would print: dates, tags,
 // periods, section markers.
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -27,7 +27,7 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-// Signature face — used for one thing only: his name. A script next to
+// Signature face --- used for one thing only: his name. A script next to
 // mono field labels reads as the person behind the machine output.
 const greatVibes = Great_Vibes({
   subsets: ["latin"],
@@ -37,8 +37,8 @@ const greatVibes = Great_Vibes({
 });
 
 export const metadata: Metadata = {
-  title: "Brighton Matikiti — Data & AI Engineer",
-  description: "Brighton Matikiti — AI Engineering student at USTHB, building practical software with data, machine learning and modern web technologies.",
+  title: "Brighton Matikiti --- Data & AI Engineer",
+  description: "Brighton Matikiti --- AI Engineering student at USTHB, building practical software with data, machine learning and modern web technologies.",
 };
 
 export const viewport = {

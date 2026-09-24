@@ -66,7 +66,7 @@ export default function AboutPage() {
           </div>
         </motion.div>
 
-        {/* Image column — one lead frame plus two supporting stills. */}
+        {/* Image column --- one lead frame plus two supporting stills. */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -101,7 +101,7 @@ export default function AboutPage() {
         </motion.div>
       </div>
 
-      {/* Values — three short lines, each carrying one hue. */}
+      {/* Values --- three short lines, each carrying one hue. */}
       <section className="mt-28 border-t border-line pt-16">
         <h2 className="text-h1 sm:text-display">{t.about.valuesTitle}</h2>
 

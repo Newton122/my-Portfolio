@@ -3,9 +3,9 @@
 import { useRef } from 'react'
 import { animate } from 'animejs'
 
-/* ── Tilt ─────────────────────────────────────────────────────────────
+/* ------ Tilt ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
    Wraps a block so it leans toward the pointer and lifts slightly off
-   the page. Deliberately understated — around six degrees. Past about
+   the page. Deliberately understated --- around six degrees. Past about
    ten it stops reading as a solid object catching the light and starts
    reading as a gimmick.
 

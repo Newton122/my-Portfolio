@@ -1,5 +1,5 @@
 ================================================================================
-HOW THIS PORTFOLIO WORKS  —  a map for editing it yourself
+HOW THIS PORTFOLIO WORKS  ---  a map for editing it yourself
 Project: /home/newton/Desktop/my-portfolio/build2
 Stack:   Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS 3
 Chatbot: separate Python service in ./portfolio-chatbot (FastAPI + Gemini)
@@ -18,7 +18,7 @@ LAYOUT, not the WORDS. The words live in two dictionary files:
     src/translations/en.ts     <-- English text
     src/translations/fr.ts     <-- French text
 
-`t` means "translations" — it is whichever dictionary matches the language the
+`t` means "translations" --- it is whichever dictionary matches the language the
 visitor picked. So this chain:
 
     t . about . title
@@ -41,7 +41,7 @@ means: open src/translations/en.ts, find the `about:` section, find `title:`.
         }
 
 TO CHANGE THE ABOUT TEXT: edit en.ts (and the same key in fr.ts). Do NOT edit
-page.tsx — the page is just the shape the text is poured into.
+page.tsx --- the page is just the shape the text is poured into.
 
 RULE: en.ts and fr.ts must have the SAME KEYS. If you add `intro5` to en.ts and
 forget fr.ts, TypeScript throws an error and the page will not compile. Adding
@@ -49,7 +49,7 @@ both takes ten seconds; forgetting costs you a confusing red error.
 
 
 --------------------------------------------------------------------------------
-1. THE FLOW — what happens when someone opens a page
+1. THE FLOW --- what happens when someone opens a page
 --------------------------------------------------------------------------------
 
     browser asks for  /about
@@ -63,7 +63,7 @@ both takes ten seconds; forgetting costs you a confusing red error.
              v                  (so every component can read `t`)
     src/components/ClientProviders.tsx
              |                  Navbar + ContactRail + <main> + Footer +
-             v                  PortfolioChat — the furniture on every page
+             v                  PortfolioChat --- the furniture on every page
     src/app/about/page.tsx      the page itself: <PageShell> + your content
              |
              v
@@ -101,7 +101,7 @@ Page LAYOUT (order of sections, grid)    src/app/<page>/page.tsx
 Navbar, footer, chat widget, rail        src/components/*.tsx
 Colours, fonts, shadows, reusable CSS    src/app/globals.css  +  tailwind.config.js
 Images, PDFs, resume                     public/   (referenced as "/img.jpg")
-Gemini key / chatbot settings            portfolio-chatbot/.env  — never commit
+Gemini key / chatbot settings            portfolio-chatbot/.env  --- never commit
 Next.js secrets (SMTP, chat URL)         build2/.env.local (create it if needed)
 
 Routes (URLs) come from FOLDER NAMES inside src/app:
@@ -116,7 +116,7 @@ nav (translations nav: + the list in src/components/Navbar.tsx).
 
 
 --------------------------------------------------------------------------------
-3. WORKED EXAMPLE — change "What I care about" on the About page
+3. WORKED EXAMPLE --- change "What I care about" on the About page
 --------------------------------------------------------------------------------
 
 1. Open src/app/about/page.tsx. Find what renders it:
@@ -134,7 +134,7 @@ nav (translations nav: + the list in src/components/Navbar.tsx).
 5. Save. The dev server reloads the page by itself (hot reload).
 
 Anything NOT wrapped in {curly braces} in the JSX is literal text you can edit
-right there — e.g. in about/page.tsx the caption 'Unitrans' and the alt text are
+right there --- e.g. in about/page.tsx the caption 'Unitrans' and the alt text are
 plain strings, not translation keys.
 
 
@@ -176,7 +176,7 @@ COMPONENT      so it can have state, clicks and animation. Almost every page her
 HYDRATION      Server sends HTML, then React "wakes it up" in the browser.
                NOTE: ClientProviders is loaded with `ssr: false`, so the navbar,
                contact rail and chat widget only appear AFTER hydration. That is
-               why they are missing if you look at raw HTML with curl — not a bug.
+               why they are missing if you look at raw HTML with curl --- not a bug.
 
 ROUTE /        A URL. In the App Router, a folder under src/app with a page.tsx
 APP ROUTER     becomes a route. `[slug]` is a dynamic segment: one file serves
@@ -189,7 +189,7 @@ API ROUTE      Server code at src/app/api/<name>/route.ts, reachable at
                /api/<name>. Used for things the browser must not do directly
                (send mail, hold a secret key).
 
-PROXY          /api/chat does not talk to Gemini itself — it forwards the message
+PROXY          /api/chat does not talk to Gemini itself --- it forwards the message
                to the Python backend (PYTHON_CHAT_URL, default
                http://127.0.0.1:8000/chat) and returns its answer. That keeps the
                API key on the server side.
@@ -220,18 +220,18 @@ FRAMER MOTION  The animation library. <motion.div initial={...} whileInView={...
 
 
 --------------------------------------------------------------------------------
-5. THE DATA FILES (src/lib) — where real content lives
+5. THE DATA FILES (src/lib) --- where real content lives
 --------------------------------------------------------------------------------
 
 These are plain TypeScript arrays. Editing them is just editing text between
-quotes. Each file starts with an `interface` that lists the allowed fields —
+quotes. Each file starts with an `interface` that lists the allowed fields ---
 read that first; it tells you exactly which fields exist and which are optional
 (a `?` means optional).
 
 projects.ts   PROJECTS: slug, title, tagline, description, built?, learned?,
               tech[], github, demo, image?, imageAlt.
               Screenshot goes in public/ and is referenced as '/name.png'.
-              There is a commented-out template at the bottom of the list —
+              There is a commented-out template at the bottom of the list ---
               copy it, uncomment, fill in.
 
               French: fr.ts -> projects.data lists PARTIAL entries matched by
@@ -270,8 +270,8 @@ The widget shows "assistant unavailable" when this is not running.
   "public" in the path).
 * A component using useState / onClick needs "use client" at the top of its file.
 * Commas matter: every entry in an object or array ends with a comma.
-* Quotes inside text: use "double" outside and 'single' inside, or escape it —
+* Quotes inside text: use "double" outside and 'single' inside, or escape it ---
   "I'm" is fine inside double quotes, 'I'm' is a syntax error.
-* Don't edit .next/ or node_modules/ — generated, not yours.
+* Don't edit .next/ or node_modules/ --- generated, not yours.
 * If the page goes blank, look at the terminal running `npm run dev`; the error
   there names the file and the line.

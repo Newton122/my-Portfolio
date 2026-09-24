@@ -62,7 +62,7 @@ add('profile', 'about', 'About Brighton', '/about', lines(
   `Roles: ${t.home.roles.join(', ')}.`,
   t.home.description,
   `Status: ${t.home.badge}.`,
-  `Values: ${t.about.honesty} — ${t.about.honestyBody} ${t.about.depth} — ${t.about.depthBody} ${t.about.building} — ${t.about.buildingBody}`,
+  `Values: ${t.about.honesty} --- ${t.about.honestyBody} ${t.about.depth} --- ${t.about.depthBody} ${t.about.building} --- ${t.about.buildingBody}`,
   `How he works: ${t.philosophy.cards.map((c) => `${c.title} (${c.body})`).join('; ')}.`,
 ))
 
@@ -79,7 +79,7 @@ add('contact', 'contact', 'Contact & availability', '/contact', lines(
 
 for (const p of projects.PROJECTS) {
   add(`project-${p.slug}`, 'projects', `Project: ${p.title}`, '/projects', lines(
-    `${p.title} — ${p.tagline}.`,
+    `${p.title} --- ${p.tagline}.`,
     p.description,
     p.built && `How it was built: ${p.built}`,
     p.learned && `What he learned: ${p.learned}`,
@@ -104,11 +104,11 @@ add('experience', 'experience', 'Experience timeline', '/experience', lines(
 ))
 for (const e of timeline.filter((e) => e.type !== 'project')) {
   add(`exp-${e.title.toLowerCase().replace(/\W+/g, '-')}`, e.type, e.title, '/experience',
-    `${e.title} — ${e.org}, ${e.period}. ${e.description} Tags: ${e.tags.join(', ')}.`)
+    `${e.title} --- ${e.org}, ${e.period}. ${e.description} Tags: ${e.tags.join(', ')}.`)
 }
 
 add('education', 'education', 'Education', '/education', lines(
-  `${t.education.degree} at USTHB (Algiers) — ${t.education.degreeType}, ${t.education.status.toLowerCase()} (2024 – present).`,
+  `${t.education.degree} at USTHB (Algiers) --- ${t.education.degreeType}, ${t.education.status.toLowerCase()} (2024 --- present).`,
   `Coursework: ${experience.COURSEWORK.join(', ')}.`,
   `${t.education.interests.title1}: ${t.education.interests.text1}`,
   `${t.education.interests.title2}: ${t.education.interests.text2}`,
