@@ -80,7 +80,7 @@ export default function Navbar() {
               key={href}
               href={href}
               aria-current={isActive(href) ? 'page' : undefined}
-              className={`relative px-2.5 py-2 text-[0.8125rem] font-semibold transition-colors duration-200 ${
+              className={`relative px-2.5 py-2 text-[0.8125rem] font-bold transition-colors duration-200 ${
                 overHero
                   ? isActive(href)
                     ? 'text-white'

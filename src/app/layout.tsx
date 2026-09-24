@@ -50,7 +50,7 @@ export const viewport = {
 
 // Runs before first paint so the page never flashes the wrong theme.
 const themeInit = `
-(function(){try{var s=localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d)document.documentElement.classList.add('dark')}catch(e){}})()
+(function(){try{var s=localStorage.getItem('theme');if(s==='dark')document.documentElement.classList.add('dark')}catch(e){}})()
 `;
 
 export default function RootLayout({
