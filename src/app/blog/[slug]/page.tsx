@@ -65,7 +65,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               />
             </div>
             <figcaption className="border-t border-line px-4 py-3 text-sm text-ink-3">
-              Representing OpenMinds at a job summit
+              Representing OpenMinds Club at a job summit
             </figcaption>
           </figure>
         )}
