@@ -4,10 +4,10 @@ import { useRef, useState } from 'react'
 import { Plus } from 'lucide-react'
 import { animate } from 'animejs'
 
-/* ------ Principles ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/* ── Principles ───────────────────────────────────────────────────────
    The four habits, collapsed to their headings. Opening one is a real
    height animation rather than a class toggle, so the list below is
-   pushed down instead of jumping --- and the panel tips up out of the
+   pushed down instead of jumping - and the panel tips up out of the
    fold on its own axis, which is what makes it read as unfolding
    rather than merely appearing.
 
@@ -103,7 +103,7 @@ export default function Principles({
               isOpen ? 'bg-surface-2/40' : 'hover:bg-surface-2/20'
             }`}
           >
-            {/* The open item gets a lit rule down its left edge --- the
+            {/* The open item gets a lit rule down its left edge - the
                 only colour in the list, so the eye never loses which
                 one is expanded. */}
             <span

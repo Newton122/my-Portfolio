@@ -30,7 +30,7 @@ export default function EducationPage() {
             <Eyebrow tone="violet" className="mb-3">{t.education.degreeType}</Eyebrow>
             <h2 className="text-h1">{t.education.degree}</h2>
             <p className="data-mono mt-3 text-ink-3">
-              USTHB · 2024 --- {language === 'fr' ? 'Présent' : 'Present'}
+              USTHB · 2024 - {language === 'fr' ? 'Présent' : 'Present'}
             </p>
           </div>
 

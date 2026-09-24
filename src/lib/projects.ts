@@ -3,20 +3,20 @@ export interface Project {
   title: string
   tagline: string
   description: string
-  /** Optional case-study notes --- one or two sentences each. */
+  /** Optional case-study notes - one or two sentences each. */
   built?: string
   learned?: string
   tech: string[]
   github: string
   demo: string | null
-  /** Screenshot in /public. Optional --- a title card is shown without one. */
+  /** Screenshot in /public. Optional - a title card is shown without one. */
   image?: string
   imageAlt: string
 }
 
 /* To add a project: copy the template at the bottom of this list,
    put a screenshot in /public, and fill it in. The French page reuses
-   these entries automatically --- add a translation in
+   these entries automatically - add a translation in
    translations/fr.ts (same slug) only if you want one. */
 export const PROJECTS: Project[] = [
   {
@@ -80,7 +80,7 @@ export const PROJECTS: Project[] = [
     tagline: 'Book library interface',
     description: 'A frontend for browsing books, filtering collections and keeping a reading list.',
     built: 'React and Tailwind CSS, with fast search and filters.',
-    learned: 'Small details --- empty states, loading states --- matter a lot.',
+    learned: 'Small details - empty states, loading states - matter a lot.',
     tech: ['React', 'Tailwind CSS'],
     github: 'https://github.com/Newton122',
     demo: 'https://book-library-system-frontend.vercel.app/',
@@ -91,7 +91,7 @@ export const PROJECTS: Project[] = [
     slug: 'portfolio-site',
     title: 'This portfolio',
     tagline: 'Personal website',
-    description: 'The site you are on --- built with Next.js, TypeScript and Tailwind CSS.',
+    description: 'The site you are on - built with Next.js, TypeScript and Tailwind CSS.',
     tech: ['Next.js', 'TypeScript', 'Tailwind CSS'],
     github: 'https://github.com/Newton122',
     demo: null,
@@ -99,7 +99,7 @@ export const PROJECTS: Project[] = [
     imageAlt: 'Portfolio preview',
   },
 
-  // ------ Template ---------------------------------------------------------------------------------------------------------------------------------------
+  // ── Template ─────────────────────────────────────────────
   // {
   //   slug: 'my-new-project',
   //   title: 'Project name',

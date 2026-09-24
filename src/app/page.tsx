@@ -21,7 +21,7 @@ const ROLES_FR = ['machine learning', 'pipelines de donnÃ©es', 'analyse de donnÃ
 const ROLE_TONES: Tone[] = ['violet', 'teal', 'green']
 
 /** The hero readout. A cursor that types through the things Brighton
- *  is working toward --- mono, because it is a field value, not a slogan. */
+ *  is working toward - mono, because it is a field value, not a slogan. */
 function Typewriter() {
   const { language } = useLanguage()
   const words = language === 'fr' ? ROLES_FR : ROLES_EN
@@ -68,7 +68,7 @@ export default function HomePage() {
 
   return (
     <div className="overflow-x-clip">
-      {/* -•-• Hero -•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•
+      {/* â•â• Hero â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
           Asymmetric on purpose: the type block runs to the left gutter
           and the portrait bleeds off the right edge, so the composition
           has a direction instead of sitting in a centred box. */}
@@ -76,7 +76,7 @@ export default function HomePage() {
         <DotsField />
         <div className="grain pointer-events-none absolute inset-0" />
 
-        {/* Portrait --- a cut-out with no plate behind it, so the figure
+        {/* Portrait - a cut-out with no plate behind it, so the figure
             stands directly in the dot field. The steel duotone lives in
             the filter chain rather than in an overlay, because an overlay
             would paint the empty half of the frame too. */}
@@ -133,7 +133,7 @@ export default function HomePage() {
               </p>
               <p className="mt-4 font-mono text-sm text-white/40">
                 <span className="select-none text-white/20">$ </span>
-                {fr ? 'orientation' : 'focus'} ---&nbsp;
+                {fr ? 'orientation' : 'focus'} -&nbsp;
                 <Typewriter />
               </p>
             </div>
@@ -181,7 +181,7 @@ export default function HomePage() {
 
       </section>
 
-      {/* -•-• Ticker -•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•
+      {/* â•â• Ticker â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
           A full-bleed moving strip. Breaks the stacked-section rhythm
           and puts the whole toolchain on screen without a tag cloud. */}
       <div className="marquee-host mask-fade-x relative overflow-hidden border-b border-line bg-surface-sunk py-4">
@@ -195,11 +195,11 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* -•-• Selected work -•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•
+      {/* â•â• Selected work â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
           Cards, not screenshots: the screenshots were all different
           shapes and themes and fought each other. The cards share the
           section's surface so they sit in the page rather than on top
-          of it --- their drawn edge is what makes them cards. Order
+          of it - their drawn edge is what makes them cards. Order
           follows lib/projects.ts. */}
       <section className="border-b border-line bg-surface py-section">
         <div className="mx-auto max-w-6xl px-6">
@@ -265,7 +265,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* -•-• Stack -•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•
+      {/* â•â• Stack â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
           Set as a spec sheet: category on the left, values on the
           right. A centred cloud of chips hides which things group
           together, which is the only interesting part. */}
@@ -298,7 +298,7 @@ export default function HomePage() {
                   className="grid grid-cols-1 gap-3 py-7 sm:grid-cols-[13rem_minmax(0,1fr)] sm:gap-8"
                 >
                   {/* One colour for the whole list; amber marks the one
-                      group that means something different --- in progress. */}
+                      group that means something different - in progress. */}
                   <dt className={`eyebrow pt-0.5 ${learning ? 'text-glow-amber' : 'text-white/45'}`}>
                     {(t.skills.categories as Record<string, string>)[group] ?? group}
                   </dt>
@@ -321,7 +321,7 @@ export default function HomePage() {
         </div>
       </section>
  
-      {/* -•-• Writing -•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•
+      {/* â•â• Writing â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
           One lead post, two follow-ups. Three equal cards give every
           post the same weight, which is never true. */}
       <section className="border-b border-line bg-canvas py-section">
@@ -390,9 +390,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* -•-• Close -•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•-•
+      {/* â•â• Close â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
           Ranged left against a dark band, with the address set as the
-          largest thing on screen --- it is the actual call to action. */}
+          largest thing on screen - it is the actual call to action. */}
       <section className="bg-steel relative isolate overflow-hidden py-section">
         <DotsField />
         <div className="grain pointer-events-none absolute inset-0" />

@@ -18,8 +18,8 @@ export default function ProjectsPage() {
 
   const lead =
     language === 'fr'
-      ? 'Des projets construits pendant mes études --- data, IA et web.'
-      : 'Things I have built while studying --- data, AI and web.'
+      ? 'Des projets construits pendant mes études - data, IA et web.'
+      : 'Things I have built while studying - data, AI and web.'
 
   return (
     <PageShell width="wide" header={
@@ -88,7 +88,7 @@ export default function ProjectsPage() {
                 {[
                   { label: language === 'fr' ? 'Aperçu' : 'Overview', text: selected.description },
                   { label: language === 'fr' ? 'Réalisation' : 'What I built', text: selected.built },
-                  { label: language === 'fr' ? 'Ce que j--�ai appris' : 'What I learned', text: selected.learned },
+                  { label: language === 'fr' ? 'Ce que j’ai appris' : 'What I learned', text: selected.learned },
                 ]
                   .filter((section) => section.text)
                   .map((section, i) => (

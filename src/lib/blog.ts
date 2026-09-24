@@ -9,7 +9,7 @@ export interface BlogPost {
   tags: string[]
 }
 
-// Starter posts --- written to match the real focus areas (backend, databases, AI
+// Starter posts - written to match the real focus areas (backend, databases, AI
 // curiosity) without inventing specific claims. Swap these for your own writing
 // whenever you're ready; the structure (category, tags, markdown-style **headers**
 // in body) is built to make that easy.
@@ -21,7 +21,7 @@ export const BLOG_POSTS: BlogPost[] = [
     readTime: '4 min read',
     category: 'Database',
     excerpt:
-      'The biggest slowdowns in my projects rarely come from a missing feature --- they come from a data shape that made a simple question expensive to answer.',
+      'The biggest slowdowns in my projects rarely come from a missing feature - they come from a data shape that made a simple question expensive to answer.',
     body: `Most of the friction I have run into on past projects did not come from a missing feature. It came from a table shape that made a simple question expensive to answer.
 
 **The contract matters more than the code**
@@ -30,7 +30,7 @@ When I start a new project now, I sketch the entities the same way I would sketc
 
 **Slower on day one, faster every day after**
 
-It slows down the very first day, because you are resisting the urge to just start writing routes. But it pays for itself almost immediately --- migrations get simpler, queries get shorter, and the frontend stops fighting the backend's shape.
+It slows down the very first day, because you are resisting the urge to just start writing routes. But it pays for itself almost immediately - migrations get simpler, queries get shorter, and the frontend stops fighting the backend's shape.
 
 **What I am still working on**
 
@@ -44,8 +44,8 @@ Indexing strategy and knowing when a denormalized read model is actually the rig
     readTime: '5 min read',
     category: 'Backend',
     excerpt:
-      'Adding real authentication and draggable state to a MERN app surfaced problems tutorials never mention --- mostly around what happens when things happen out of order.',
-    body: `Tutorials make authentication look like a solved problem: hash the password, sign a token, done. The part they skip is everything that happens after --- what your UI should do while a request is in flight, and what happens when two updates land out of order.
+      'Adding real authentication and draggable state to a MERN app surfaced problems tutorials never mention - mostly around what happens when things happen out of order.',
+    body: `Tutorials make authentication look like a solved problem: hash the password, sign a token, done. The part they skip is everything that happens after - what your UI should do while a request is in flight, and what happens when two updates land out of order.
 
 **Optimistic updates are a tradeoff, not a default**
 
@@ -57,7 +57,7 @@ A valid token tells you who someone is. It does not tell you what they are allow
 
 **What's next**
 
-Looking more closely at refresh token rotation and session invalidation --- the parts of auth that only matter once something goes wrong.`,
+Looking more closely at refresh token rotation and session invalidation - the parts of auth that only matter once something goes wrong.`,
     tags: ['Node.js', 'Authentication', 'MERN'],
   },
   {
@@ -68,7 +68,7 @@ Looking more closely at refresh token rotation and session invalidation --- the 
     category: 'AI/ML',
     excerpt:
       "I'm not trying to become a machine learning researcher. Here's the honest reason I'm spending time on it anyway.",
-    body: `I write backend code by instinct --- APIs, databases, the systems underneath an app. So why spend time studying machine learning?
+    body: `I write backend code by instinct - APIs, databases, the systems underneath an app. So why spend time studying machine learning?
 
 **AI is becoming infrastructure**
 
@@ -76,7 +76,7 @@ The same way understanding how a database works makes you a better engineer even
 
 **The practical shape of the work**
 
-Most of what I have studied so far is less about the models themselves and more about the data around them --- cleaning, transforming, and preparing data is most of the actual work in any real system.
+Most of what I have studied so far is less about the models themselves and more about the data around them - cleaning, transforming, and preparing data is most of the actual work in any real system.
 
 **What I expect**
 

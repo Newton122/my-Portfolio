@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react'
 
 /* The dot field's palette. The steel bands are dark in both themes,
-   so these are constants rather than theme-reactive --- there is no
+   so these are constants rather than theme-reactive - there is no
    light-mode variant of the ground they sit on. */
 const OPTIONS = {
   mouseControls: true,
@@ -19,24 +19,24 @@ const OPTIONS = {
   size: 2.2,
   spacing: 32,
   // The lines option draws a rotating wireframe sphere over the field.
-  // Off by default --- the dots alone are the quieter, less templated read.
+  // Off by default - the dots alone are the quieter, less templated read.
   showLines: false,
 }
 
 /**
- * Vanta DOTS --- a receding grid of points with a slow wave running
+ * Vanta DOTS - a receding grid of points with a slow wave running
  * through it, replacing the drifting gradient pools that used to light
  * these bands.
  *
  * Fills its nearest positioned ancestor, so it goes inside a
- * `bg-steel --¦ relative isolate overflow-hidden` band and paints behind
+ * `bg-steel â€¦ relative isolate overflow-hidden` band and paints behind
  * everything declared after it.
  *
  * three.js and vanta are both imported lazily and only once the gates
  * below pass, so neither reaches the bundle of a visitor who will
  * never see the effect. Vanta's dist reads `window.THREE` when it is
  * evaluated rather than from its own options, so the assignment has to
- * happen before that import --- hence the two awaits in order.
+ * happen before that import - hence the two awaits in order.
  */
 export default function DotsField({ className = '' }: { className?: string }) {
   const holder = useRef<HTMLDivElement>(null)

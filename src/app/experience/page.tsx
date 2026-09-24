@@ -6,7 +6,7 @@ import { Tag, PageShell, PageHeader } from '@/components/ui'
 import { EXPERIENCE_TIMELINE, type TimelineItem } from '@/lib/experience'
 import { useLanguage } from '@/context/LanguageContext'
 
-// Entry type drives the marker --- the only place an icon carries
+// Entry type drives the marker - the only place an icon carries
 // information rather than decoration on this page.
 const TYPE_META = {
   education: { Icon: GraduationCap, tint: 'text-hue-violet border-hue-violet/30 bg-hue-violet/10', text: 'text-hue-violet' },

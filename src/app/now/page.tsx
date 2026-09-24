@@ -63,8 +63,8 @@ export default function NowPage() {
         <NowBlock label={t.now.building} tone="blue">
           <p className="text-base text-ink-2">
             {fr
-              ? 'De nouveaux projets data et IA --- bientôt sur la page Projets.'
-              : 'New data and AI projects --- coming soon to the Projects page.'}
+              ? 'De nouveaux projets data et IA - bientôt sur la page Projets.'
+              : 'New data and AI projects - coming soon to the Projects page.'}
           </p>
         </NowBlock>
 
@@ -74,7 +74,7 @@ export default function NowPage() {
               <li key={title} className="flex items-start gap-3">
                 <BookOpen size={15} className="mt-1 shrink-0 text-ink-3" />
                 <span className="text-base text-ink-2">
-                  <span className="font-medium text-ink">{title}</span> --- {author}
+                  <span className="font-medium text-ink">{title}</span> - {author}
                 </span>
               </li>
             ))}

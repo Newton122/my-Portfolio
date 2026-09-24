@@ -3,14 +3,14 @@
 import { useRef } from 'react'
 import { animate, stagger } from 'animejs'
 
-/* ------ HeroName ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/* ── HeroName ─────────────────────────────────────────────────────────
    The name, set in the signature face and treated as an object rather
    than as text: it sits on a plate that tips toward the pointer, and
    swells when you touch it.
 
    Both lines are animated whole, never letter by letter. A script face
    joins its glyphs, and transforming them individually tears those
-   joins apart --- the one thing you must not do to cursive. */
+   joins apart - the one thing you must not do to cursive. */
 
 const LINES = ['Brighton', 'Matikiti'] as const
 

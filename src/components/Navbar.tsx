@@ -48,8 +48,8 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // Every route now opens on a dark steel band --- the home hero, or the
-  // PageShell header --- so the bar floats over it in light-on-dark until
+  // Every route now opens on a dark steel band - the home hero, or the
+  // PageShell header - so the bar floats over it in light-on-dark until
   // the page scrolls beneath it.
   const overHero = !scrolled && !menuOpen
 
@@ -69,10 +69,10 @@ export default function Navbar() {
           onClick={() => setMenuOpen(false)}
           className="shrink-0 transition-opacity duration-200 hover:opacity-70"
         >
-          <Image src="/logo.png" alt="Brighton Matikiti --- home" width={100} height={32} className="h-7 w-auto" priority />
+          <Image src="/logo.png" alt="Brighton Matikiti - home" width={100} height={32} className="h-7 w-auto" priority />
         </Link>
 
-        {/* Desktop nav --- a rail of quiet labels with a signal underline
+        {/* Desktop nav - a rail of quiet labels with a signal underline
             marking position. No pills; the underline is enough. */}
         <nav className="hidden items-center lg:flex" aria-label="Primary">
           {LINKS.map(({ key, href }) => (

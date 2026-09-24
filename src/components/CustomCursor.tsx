@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 
 /**
- * A signal ring that trails a small dot. Deliberately minimal --- the
+ * A signal ring that trails a small dot. Deliberately minimal - the
  * cursor is furniture, not an effect.
  *
  * Position is written straight to the DOM inside one rAF loop rather
