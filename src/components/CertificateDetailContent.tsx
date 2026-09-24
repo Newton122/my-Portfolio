@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from 'framer-motion'
-import { ArrowLeft, ExternalLink, Award } from 'lucide-react'
+import { ArrowLeft, ExternalLink, Award, Download } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import type { Certificate } from '@/lib/certificates'
@@ -48,25 +48,44 @@ export default function CertificateDetailContent({ certificate }: { certificate:
 
       <div className="mx-auto max-w-3xl px-6 pt-14 sm:pt-16">
       <figure className="panel overflow-hidden p-0">
-        <Image
-          src={certificate.preview}
-          alt={cert.previewLabel || cert.title}
-          width={900}
-          height={640}
-          className="h-auto w-full bg-surface-2 object-contain"
-        />
+        {certificate.previewType === 'pdf' ? (
+          <iframe
+            src={`${certificate.preview}#view=FitH`}
+            title={cert.title}
+            className="h-[min(75vh,48rem)] w-full bg-surface-2"
+          />
+        ) : (
+          <Image
+            src={certificate.preview}
+            alt={cert.previewLabel || cert.title}
+            width={900}
+            height={640}
+            className="h-auto w-full bg-surface-2 object-contain"
+          />
+        )}
       </figure>
 
       <p className="mt-8 max-w-prose text-base leading-relaxed text-ink-2">{cert.description}</p>
 
-      <a
-        href={certificate.externalUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="btn-signal mt-8 inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium"
-      >
-        <ExternalLink size={15} /> {language === 'fr' ? 'Vérifier le certificat' : 'Verify certificate'}
-      </a>
+      <div className="mt-8 flex flex-wrap gap-3">
+        <a
+          href={certificate.externalUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-signal inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium"
+        >
+          <ExternalLink size={15} /> {language === 'fr' ? 'Vérifier le certificat' : 'Verify certificate'}
+        </a>
+        {certificate.file && (
+          <a
+            href={certificate.file}
+            download
+            className="btn-ghost inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium"
+          >
+            <Download size={15} /> {language === 'fr' ? 'Télécharger le PDF' : 'Download PDF'}
+          </a>
+        )}
+      </div>
       </div>
     </motion.div>
   )
