@@ -43,6 +43,17 @@ export default function AboutPage() {
             ))}
           </div>
 
+          <dl className="mt-10 grid max-w-prose grid-cols-1 gap-5 border-y border-line py-6 sm:grid-cols-2">
+            <div>
+              <dt className="label-mono text-ink-3">{t.about.nationalityLabel}</dt>
+              <dd className="mt-2 text-base font-semibold text-ink">{t.about.nationality}</dd>
+            </div>
+            <div>
+              <dt className="label-mono text-ink-3">{t.about.languagesLabel}</dt>
+              <dd className="mt-2 text-base font-semibold text-ink">{t.about.languages}</dd>
+            </div>
+          </dl>
+
           <div className="mt-12 border-t border-line pt-8">
             <Eyebrow tone="blue" className="mb-5">{language === 'fr' ? 'Me joindre' : 'Reach me'}</Eyebrow>
             <div className="flex flex-col gap-2.5">
