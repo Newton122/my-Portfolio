@@ -21,7 +21,7 @@ export interface Project {
 export const PROJECTS: Project[] = [
   {
     slug: 'blacphics-ecommerce',
-    title: 'Blackphics Ecommerce',
+    title: 'Blacphics Ecommerce',
     tagline: 'Custom printing and creative services',
     description:
       'A full-stack e-commerce platform for custom T-shirt printing, product sales, and creative design services, built for the Algerian market.',
@@ -46,7 +46,7 @@ export const PROJECTS: Project[] = [
     github: 'https://github.com/Newton122',
     demo: 'https://ecommerce-blacphics-stigma.vercel.app/',
     image: '/Blacphics_ecommerce.png',
-    imageAlt: 'Blackphics ecommerce website for custom T-shirt printing',
+    imageAlt: 'Blacphics ecommerce website for custom T-shirt printing',
   },
   {
     slug: 'careerlens',
