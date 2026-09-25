@@ -35,7 +35,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1.2fr]">
           <div>
             <Image src="/logo.png" alt="Brighton Matikiti" width={100} height={32} className="mb-4 h-7 w-auto" />
-            <p className="max-w-xs text-sm font-medium leading-relaxed text-ink-2">{t.footer.description}</p>
+            <p className="max-w-xs text-sm font-semibold leading-relaxed text-ink-2">{t.footer.description}</p>
             <div className="mt-5 flex items-center gap-2">
               {[
                 { href: GITHUB_URL, Icon: Github, label: 'GitHub' },
@@ -65,7 +65,7 @@ export default function Footer() {
               <ul className="flex flex-col gap-2.5">
                 {items.map((p) => (
                   <li key={p.href}>
-                    <Link href={p.href} className="link-quiet text-sm font-medium">
+                    <Link href={p.href} className="link-quiet text-sm font-semibold">
                       {language === 'fr' ? p.labelFr : p.label}
                     </Link>
                   </li>
@@ -83,12 +83,12 @@ export default function Footer() {
                   {language === 'fr' ? 'Ouvert aux stages' : 'Open to internships'}
                 </span>
               </div>
-              <p className="mt-2.5 text-sm font-medium leading-relaxed text-ink-2">
+              <p className="mt-2.5 text-sm font-semibold leading-relaxed text-ink-2">
                 {language === 'fr'
                   ? 'Data, IA et développement full-stack.'
                   : 'Data, AI and full-stack roles.'}
               </p>
-              <Link href="/contact" className="link-quiet mt-3 inline-block text-sm font-medium">
+              <Link href="/contact" className="link-quiet mt-3 inline-block text-sm font-semibold">
                 {language === 'fr' ? 'Me contacter' : 'Get in touch'}
               </Link>
             </div>
