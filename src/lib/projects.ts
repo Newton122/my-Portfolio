@@ -20,6 +20,35 @@ export interface Project {
    translations/fr.ts (same slug) only if you want one. */
 export const PROJECTS: Project[] = [
   {
+    slug: 'blacphics-ecommerce',
+    title: 'Blacphics Ecommerce',
+    tagline: 'Full-stack ecommerce platform',
+    description:
+      'A complete ecommerce website for browsing products, managing accounts, and placing orders with an experience tailored to the Algerian market.',
+    built:
+      'Built with Next.js 15, React 18, TypeScript, Tailwind CSS 4 and shadcn/ui on the frontend. The backend uses Node.js, Express, Prisma 5 and PostgreSQL, with JWT authentication, bcryptjs password hashing, Cloudinary image uploads, Resend transactional emails and cash on delivery as the payment flow.',
+    learned:
+      'Designing a full-stack product means connecting the customer experience to reliable authentication, inventory data, media handling, order workflows and practical local payment constraints.',
+    tech: [
+      'Next.js 15',
+      'React 18',
+      'TypeScript',
+      'Tailwind CSS 4',
+      'shadcn/ui',
+      'Node.js',
+      'Express',
+      'Prisma 5',
+      'PostgreSQL',
+      'JWT',
+      'Cloudinary',
+      'Resend',
+    ],
+    github: 'https://github.com/Newton122',
+    demo: 'https://ecommerce-blacphics-stigma.vercel.app/',
+    image: '/Blacphics_ecommerce.png',
+    imageAlt: 'Blacphics ecommerce website',
+  },
+  {
     slug: 'careerlens',
     title: 'CareerLens AI',
     tagline: 'AI career intelligence platform',
