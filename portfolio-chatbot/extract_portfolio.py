@@ -6,6 +6,7 @@ PORTFOLIO_ROOT = BASE_DIR.parent
 
 FILE_PATTERNS = [
     "src/lib/projects.ts",
+    "src/lib/certificates.ts",
     "src/lib/experience.ts",
     "src/lib/skills.ts",
     "src/lib/blog.ts",

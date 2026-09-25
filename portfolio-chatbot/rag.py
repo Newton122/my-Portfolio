@@ -45,7 +45,16 @@ def load_documents() -> list[dict]:
     if not text:
         raise RuntimeError("No portfolio content could be extracted from the frontend source files.")
 
-    documents = []
+    documents = [{
+        "id": "profile",
+        "title": "Brighton Matikiti - profile",
+        "url": "/about",
+        "text": (
+            "Brighton Matikiti is Zimbabwean. He speaks English and French at a conversational level. "
+            "He is an AI Engineering student at USTHB in Algiers and is looking for internships in data, AI, "
+            "or full-stack development."
+        ),
+    }]
     for index, block in enumerate(re.split(r"\n\n(?=SOURCE: )", text)):
         lines = block.splitlines()
         if not lines or not lines[0].startswith("SOURCE: "):
