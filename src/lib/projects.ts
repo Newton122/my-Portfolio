@@ -21,14 +21,14 @@ export interface Project {
 export const PROJECTS: Project[] = [
   {
     slug: 'blacphics-ecommerce',
-    title: 'Blacphics Ecommerce',
-    tagline: 'Full-stack ecommerce platform',
+    title: 'Blackphics Ecommerce',
+    tagline: 'Custom printing and creative services',
     description:
-      'A complete ecommerce website for browsing products, managing accounts, and placing orders with an experience tailored to the Algerian market.',
+      'A full-stack e-commerce platform for custom T-shirt printing, product sales, and creative design services, built for the Algerian market.',
     built:
-      'Built with Next.js 15, React 18, TypeScript, Tailwind CSS 4 and shadcn/ui on the frontend. The backend uses Node.js, Express, Prisma 5 and PostgreSQL, with JWT authentication, bcryptjs password hashing, Cloudinary image uploads, Resend transactional emails and cash on delivery as the payment flow.',
+      'The frontend is built with the Next.js App Router, React, TypeScript, Tailwind CSS and shadcn/ui. A Node.js and Express backend uses Prisma ORM with PostgreSQL, JWT authentication, bcryptjs password hashing, Cloudinary image uploads, Resend transactional emails and cash on delivery for the Algerian market.',
     learned:
-      'Designing a full-stack product means connecting the customer experience to reliable authentication, inventory data, media handling, order workflows and practical local payment constraints.',
+      'Building a commerce platform means connecting product discovery, custom design services, authentication, media handling and order workflows into one reliable customer experience.',
     tech: [
       'Next.js 15',
       'React 18',
@@ -46,7 +46,7 @@ export const PROJECTS: Project[] = [
     github: 'https://github.com/Newton122',
     demo: 'https://ecommerce-blacphics-stigma.vercel.app/',
     image: '/Blacphics_ecommerce.png',
-    imageAlt: 'Blacphics ecommerce website',
+    imageAlt: 'Blackphics ecommerce website for custom T-shirt printing',
   },
   {
     slug: 'careerlens',
